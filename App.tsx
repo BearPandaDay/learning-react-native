@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView, StyleSheet, useColorScheme } from 'react-native';
-import { HelloWorldScreen } from './src/presentation/screens';
+import { CounterScreen, HelloWorldScreen } from './src/presentation/screens';
 
 export const App = () => {
   const colorScheme = useColorScheme();
@@ -35,7 +35,8 @@ export const App = () => {
 
   return (
     <SafeAreaView style={{...styles.styleSafeAreaView, backgroundColor: backgroundcolor}}>
-      <HelloWorldScreen name="Luis Alfredo de la Ossa Diaz" style={{...styles, styleText: [styles.styleText, {color}]}}/>
+      {/* <HelloWorldScreen name="Luis Alfredo de la Ossa Diaz" style={{...styles, styleText: [styles.styleText, {color}]}}/> */}
+      <CounterScreen style={{...styles, styleText: [styles.styleText, {color}]}}/>
     </SafeAreaView>
   );
 };
