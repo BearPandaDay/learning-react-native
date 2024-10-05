@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, useColorScheme } from 'react-native';
+import { Platform, SafeAreaView, StyleSheet, useColorScheme } from 'react-native';
 import { CounterScreen, HelloWorldScreen } from './src/presentation/screens';
 
 export const App = () => {
@@ -57,5 +57,27 @@ const styles = StyleSheet.create({
   },
   styleText: {
     fontSize: 48,
+  },
+  buttonPressable: {
+    backgroundColor: Platform.OS === 'ios' ? 'rgba(196, 196, 196, 0)' : 'rgb(0, 93, 187)',
+    borderRadius: 100 * 0.12,
+    minWidth: 80,
+  },
+
+  textButton: {
+    color: Platform.OS === 'ios' ? 'rgb(39, 143, 255)' : 'rgb(255, 255, 255)',
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    fontSize: 30,
+  },
+
+  buttonPressed: {
+    backgroundColor: 'rgb(0, 75, 149)',
+    borderRadius: 100 * 0.12,
+    minWidth: 80,
   },
 });
