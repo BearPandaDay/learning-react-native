@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {View, Text, Pressable} from 'react-native';
+import { StylesButton } from '../../../styles';
 
 interface properties {
   children: any;
@@ -9,16 +10,18 @@ interface properties {
 }
 
 interface istyles {
-  styleSafeAreaView: object;
-  styleView: object;
-  styleText: object;
-  buttonPressable: object,
-  textButton: object,
-  buttonPressed: object,
+  styleSafeAreaView: object,
+  styleView: object,
+  styleText: object,
+  // buttonPressable: object,
+  // textButton: object,
+  // buttonPressed: object,
 }
 
 export const CounterScreen = (props: properties) => {
     const {children, style} = props;
+
+    const stylesButton = StylesButton();
 
     const [number, setNumber] = useState(0);
 
@@ -33,9 +36,9 @@ export const CounterScreen = (props: properties) => {
       <Pressable
         onPress={() => onPressIncreseDecrese(1)}
         onLongPress={() => setNumber(0)}
-        style={({pressed}) => [style.buttonPressable, pressed && style.buttonPressed]}
+        style={({pressed}) => [stylesButton.buttonPressable, pressed && stylesButton.buttonPressed]}
       >
-        <Text style={style.textButton}>+1</Text>
+        <Text style={stylesButton.textButton}>+1</Text>
       </Pressable>
     </View>
   );
