@@ -37,8 +37,13 @@ export const CounterScreen = (props: properties) => {
       {/* <Pressable onPress={() => onPressIncreseDecrese(1)} onLongPress={() => setNumber(0)} style={({pressed}) => [stylesButton.buttonPressable, pressed && stylesButton.buttonPressed]}>
         <Text style={stylesButton.textButton}>+1</Text>
       </Pressable> */}
-      <Button mode="contained" onPress={() => onPressIncreseDecrese(1)} onLongPress={() => setNumber(0)}>
-        Incrementar
+      <Button
+        mode="contained"
+        onPress={() => onPressIncreseDecrese(1)}
+        onLongPress={() => setNumber(0)}
+        style={stylesButton.buttonPressable}
+      >
+        <Text style={stylesButton.textButton}>Increment</Text>
       </Button>
     </View>
   );

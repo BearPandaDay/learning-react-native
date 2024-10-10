@@ -7,7 +7,7 @@ export const StylesApp = () => {
 
     return StyleSheet.create({
         styleSafeAreaView: {
-            backgroundColor: isdark ? '#000000' : '#ffffff',
+            backgroundColor: isdark ? '#971c1c' : '#c2d536',
             minHeight: '100%',
             minWidth: '100%',
         },
