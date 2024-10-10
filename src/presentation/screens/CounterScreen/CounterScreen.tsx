@@ -33,11 +33,7 @@ export const CounterScreen = (props: properties) => {
     <View style={style.styleView}>
       <Text style={style.styleText}>{number}</Text>
       {children}
-      <Pressable
-        onPress={() => onPressIncreseDecrese(1)}
-        onLongPress={() => setNumber(0)}
-        style={({pressed}) => [stylesButton.buttonPressable, pressed && stylesButton.buttonPressed]}
-      >
+      <Pressable onPress={() => onPressIncreseDecrese(1)} onLongPress={() => setNumber(0)} style={({pressed}) => [stylesButton.buttonPressable, pressed && stylesButton.buttonPressed]}>
         <Text style={stylesButton.textButton}>+1</Text>
       </Pressable>
     </View>

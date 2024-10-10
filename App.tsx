@@ -5,33 +5,35 @@ import {
   // HelloWorldScreen
 } from './src/presentation/screens';
 import { StylesApp } from './App/';
+import { Isdark } from './src/utils';
 
 export const App = () => {
+  const isDark = Isdark();
 
   const stylesApp = StylesApp();
-  const colorScheme = useColorScheme();
-
-  const [isDark, setIsDark] = useState<boolean>(false);
   const [color, setColor] = useState<string>('#000000');
-  const [backgroundcolor, setBackgroundColor] = useState<string>('#ffffff');
+  // const colorScheme = useColorScheme();
 
-  const getColorSchema = (): boolean => {
-    const responseIsDark: boolean = colorScheme === 'dark';
-    return responseIsDark;
-  };
+  // const [isDark, setIsDark] = useState<boolean>(false);
+  // const [backgroundcolor, setBackgroundColor] = useState<string>('#ffffff');
 
-  const funcSetIsDark = (data: boolean) => {
-    setIsDark(data);
-  };
+  // const getColorSchema = (): boolean => {
+  //   const responseIsDark: boolean = colorScheme === 'dark';
+  //   return responseIsDark;
+  // };
 
-  const funcSetValueBackgroundColor = () => {
-    isDark ? setBackgroundColor('#000000') : setBackgroundColor('#ffffff');
-  };
+  // const funcSetIsDark = (data: boolean) => {
+  //   setIsDark(data);
+  // };
+
+  // const funcSetValueBackgroundColor = () => {
+  //   isDark ? setBackgroundColor('#000000') : setBackgroundColor('#ffffff');
+  // };
 
   useEffect(() => {
-    const responseGetColorSchema = getColorSchema();
-    funcSetIsDark(responseGetColorSchema);
-    funcSetValueBackgroundColor();
+    // const responseGetColorSchema = getColorSchema();
+    // funcSetIsDark(responseGetColorSchema);
+    // funcSetValueBackgroundColor();
     funcSetValueColorLetter();
   });
 
@@ -40,7 +42,7 @@ export const App = () => {
   };
 
   return (
-    <SafeAreaView style={{...stylesApp.styleSafeAreaView, backgroundColor: backgroundcolor}}>
+    <SafeAreaView style={{...stylesApp.styleSafeAreaView}}>
       {/* <HelloWorldScreen name="Luis Alfredo de la Ossa Diaz" style={{...styles, styleText: [styles.styleText, {color}]}}/> */}
       <CounterScreen style={{...stylesApp, styleText: [stylesApp.styleText, {color}]}}/>
     </SafeAreaView>
