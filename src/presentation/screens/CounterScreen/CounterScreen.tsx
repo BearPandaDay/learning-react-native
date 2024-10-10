@@ -43,7 +43,7 @@ export const CounterScreen = (props: properties) => {
 CounterScreen.propTypes = {
     children: PropTypes.any,
     style: PropTypes.object,
-    name: PropTypes.number,
+    name: PropTypes.string,
     buttonPressable: PropTypes.object,
 };
 

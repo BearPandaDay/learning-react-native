@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView, useColorScheme } from 'react-native';
+import {
+  SafeAreaView,
+  // useColorScheme
+} from 'react-native';
 import {
   CounterScreen,
   // HelloWorldScreen
 } from './src/presentation/screens';
 import { StylesApp } from './App/';
 import { Isdark } from './src/utils';
+import { PaperProvider } from 'react-native-paper';
 
 export const App = () => {
   const isDark = Isdark();
@@ -42,9 +46,13 @@ export const App = () => {
   };
 
   return (
-    <SafeAreaView style={{...stylesApp.styleSafeAreaView}}>
-      {/* <HelloWorldScreen name="Luis Alfredo de la Ossa Diaz" style={{...styles, styleText: [styles.styleText, {color}]}}/> */}
-      <CounterScreen style={{...stylesApp, styleText: [stylesApp.styleText, {color}]}}/>
-    </SafeAreaView>
+    <PaperProvider>
+      <SafeAreaView style={{...stylesApp.styleSafeAreaView}}>
+        {/* <HelloWorldScreen name="Luis Alfredo de la Ossa Diaz" style={{...styles, styleText: [styles.styleText, {color}]}}/> */}
+        <CounterScreen
+          style={{...stylesApp, styleText: [stylesApp.styleText, {color}]}}
+        />
+      </SafeAreaView>
+    </PaperProvider>
   );
 };
