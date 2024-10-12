@@ -8,13 +8,13 @@ export const StylesButton = () => {
     return (
         StyleSheet.create({
             buttonPressable: {
-                backgroundColor:
-                Platform.OS === 'ios' ? 'rgba(196, 196, 196, 0)' : 'rgb(0, 93, 187)',
+                backgroundColor: Platform.OS === 'ios' ? 'rgba(196, 196, 196, 0)' : 'rgb(0, 93, 187)',
                 borderRadius: 100 * 0.12,
                 minWidth: 80,
                 position: 'absolute',
-                right: 0,
+                right: 10,
                 bottom: 100,
+                color: 'red',
             },
 
             textButton: {
@@ -34,6 +34,14 @@ export const StylesButton = () => {
                 backgroundColor: Platform.OS === 'ios' && isdark ? 'rgba(255, 255, 255, 0)' : 'rgb(0, 75, 149)',
                 borderRadius: 100 * 0.12,
                 minWidth: 80,
+            },
+            fab: {
+                backgroundColor: Platform.OS !== 'macos' ? 'rgb(209, 178, 230)' : 'rgb(0, 93, 187)',
+                // borderRadius: 100 * 0.12,
+                // minWidth: 80,
+                position: 'absolute',
+                right: 10,
+                bottom: 100,
             },
         })
     );

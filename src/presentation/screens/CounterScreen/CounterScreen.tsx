@@ -1,8 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {View, Text, Pressable} from 'react-native';
+import {
+  View,
+  Text,
+  // Pressable,
+  StyleSheet,
+  Platform,
+} from 'react-native';
 import { StylesButton } from '../../../styles';
-import { Button } from 'react-native-paper';
+import {
+  // Button,
+  FAB,
+} from 'react-native-paper';
+// import Icon from 'react-native-vector-icons/dist/Ionicons';
+import Icon from 'react-native-vector-icons/dist/AntDesign';
+import { Isdark } from '../../../utils';
 
 interface properties {
   children: any;
@@ -31,21 +43,31 @@ export const CounterScreen = (props: properties) => {
     }
 
   return (
+    <>
     <View style={style.styleView}>
       <Text style={style.styleText}>{number}</Text>
       {children}
       {/* <Pressable onPress={() => onPressIncreseDecrese(1)} onLongPress={() => setNumber(0)} style={({pressed}) => [stylesButton.buttonPressable, pressed && stylesButton.buttonPressed]}>
         <Text style={stylesButton.textButton}>+1</Text>
       </Pressable> */}
-      <Button
+      {/* <Button
         mode="contained"
         onPress={() => onPressIncreseDecrese(1)}
         onLongPress={() => setNumber(0)}
         style={stylesButton.buttonPressable}
       >
         <Text style={stylesButton.textButton}>Increment</Text>
-      </Button>
+      </Button> */}
+      <FAB
+        label="+1"
+        onPress={() => onPressIncreseDecrese(1)}
+        onLongPress={() => setNumber(0)}
+        style={stylesButton.fab}
+      />
+        {/* <Icon style={StyleSheet.create({prueba: {fontSize: 80, color: `${Isdark() ? '#fff' : '#000'}`}}).prueba} name="battery-charging-outline" /> */}
+        <Icon style={StyleSheet.create({prueba: {fontSize: 80, color: `${Isdark() ? '#fff' : '#000'}`}}).prueba} name={Platform.OS === 'ios' ? 'apple1' : 'android1'} />
     </View>
+    </>
   );
 };
 
@@ -56,8 +78,8 @@ CounterScreen.propTypes = {
     buttonPressable: PropTypes.object,
 };
 
-CounterScreen.defaultProps = {
-    children: <></>,
-    style: {},
-    name: '',
-};
+// CounterScreen.defaultProps = {
+//     children: <></>,
+//     style: {},
+//     name: '',
+// };
