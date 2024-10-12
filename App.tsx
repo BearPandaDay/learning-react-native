@@ -10,6 +10,7 @@ import {
 import { StylesApp } from './App/';
 import { Isdark } from './src/utils';
 import { PaperProvider } from 'react-native-paper';
+import IonIcon from 'react-native-vector-icons/Ionicons';
 
 export const App = () => {
   const isDark = Isdark();
@@ -46,7 +47,10 @@ export const App = () => {
   };
 
   return (
-    <PaperProvider>
+    <PaperProvider
+    settings={{
+      icon: (props) => <IonIcon {...props} />
+    }}>
       <SafeAreaView style={{...stylesApp.styleSafeAreaView}}>
         {/* <HelloWorldScreen name="Luis Alfredo de la Ossa Diaz" style={{...styles, styleText: [styles.styleText, {color}]}}/> */}
         <CounterScreen

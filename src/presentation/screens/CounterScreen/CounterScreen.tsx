@@ -12,8 +12,8 @@ import {
   // Button,
   FAB,
 } from 'react-native-paper';
-// import Icon from 'react-native-vector-icons/dist/Ionicons';
-import Icon from 'react-native-vector-icons/dist/AntDesign';
+import Icon from 'react-native-vector-icons/dist/Ionicons';
+// import Icon from 'react-native-vector-icons/dist/AntDesign';
 import { Isdark } from '../../../utils';
 
 interface properties {
@@ -59,13 +59,14 @@ export const CounterScreen = (props: properties) => {
         <Text style={stylesButton.textButton}>Increment</Text>
       </Button> */}
       <FAB
-        label="+1"
+        label=""
         onPress={() => onPressIncreseDecrese(1)}
         onLongPress={() => setNumber(0)}
         style={stylesButton.fab}
+        icon="add-outline"
       />
         {/* <Icon style={StyleSheet.create({prueba: {fontSize: 80, color: `${Isdark() ? '#fff' : '#000'}`}}).prueba} name="battery-charging-outline" /> */}
-        <Icon style={StyleSheet.create({prueba: {fontSize: 80, color: `${Isdark() ? '#fff' : '#000'}`}}).prueba} name={Platform.OS === 'ios' ? 'apple1' : 'android1'} />
+        <Icon style={StyleSheet.create({prueba: {fontSize: 80, color: `${Isdark() ? '#fff' : '#000'}`}}).prueba} name={Platform.OS === 'ios' ? 'logo-apple' : 'logo-android'} />
     </View>
     </>
   );
