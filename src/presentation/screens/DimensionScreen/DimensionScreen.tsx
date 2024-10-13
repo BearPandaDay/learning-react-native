@@ -6,25 +6,30 @@ export const DimensionScreen = () => {
   const dimentionHook = useWindowDimensions();
   const {width, height} = dimentionHook;
 
+  const stylesDimensionScreen = StylesDimensionScreen();
+
   return (
     <>
-    <View style={StylesDimensionScreen.container}>
-      <View style={{...StylesDimensionScreen.purpleBox, width: width * 0.8}} />
+    <View style={stylesDimensionScreen.container}>
+      <View style={{...stylesDimensionScreen.purpleBox, width: width * 0.8}} />
     </View>
     <Text>Jurgo</Text>
     </>
   );
 };
 
-const StylesDimensionScreen = StyleSheet.create({
-  container: {
-    backgroundColor: 'red',
-    width: '50%',
-    height: '50%',
-  },
-  purpleBox: {
-    backgroundColor: 'purple',
-    width: '50%',
-    height: '50%',
-  },
-});
+const StylesDimensionScreen = () => {
+  return StyleSheet.create({
+    container: {
+      backgroundColor: 'red',
+      width: '50%',
+      height: '50%',
+    },
+    purpleBox: {
+      backgroundColor: 'purple',
+      width: '50%',
+      height: '50%',
+    },
+  });
+};
+
