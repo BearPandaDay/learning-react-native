@@ -1,8 +1,16 @@
 import React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { GlobalStyles } from '../../../config/theme/app-theme';
+import { CalculatorButton } from '../../components';
 
 export const CalculatorScreen = () => {
+    const typeButtons: Array<string> = [
+        'C',
+        '+/-',
+        'del',
+        '/',
+    ];
+
   return (
     <View style={GlobalStyles.calculatorContainer}>
       <View style={StylesCalculatorScreen.contentFather}>
@@ -11,18 +19,7 @@ export const CalculatorScreen = () => {
       </View>
 
       <View style={GlobalStyles.row}>
-        <Pressable style={GlobalStyles.button}>
-          <Text style={GlobalStyles.buttonText}>1</Text>
-        </Pressable>
-        <Pressable style={GlobalStyles.button}>
-          <Text style={GlobalStyles.buttonText}>2</Text>
-        </Pressable>
-        <Pressable style={GlobalStyles.button}>
-          <Text style={GlobalStyles.buttonText}>3</Text>
-        </Pressable>
-        <Pressable style={GlobalStyles.button}>
-          <Text style={GlobalStyles.buttonText}>4</Text>
-        </Pressable>
+        {typeButtons.map((data, index) => <CalculatorButton key={index} label={data} />)}
       </View>
     </View>
   );
