@@ -48,11 +48,13 @@ export const GlobalStyles = StyleSheet.create({
     button: {
         // alignItems: 'center',
         width: 80,
-        aspectRatio: 1 / 1,
+        height: 80,
+        // aspectRatio: 1 / 1,
         backgroundColor: colors.darkGray,
         borderRadius: 100,
         justifyContent: 'center',
-        marginHorizontal: 10,
+        // marginHorizontal: Platform.OS === 'ios' ? 7 : 10,
+        marginVertical: 5,
     },
 
     buttonText: {
@@ -60,6 +62,6 @@ export const GlobalStyles = StyleSheet.create({
         padding: 10,
         fontSize: 30,
         color: '#ffffff',
-        fontWeight: '300',
+        fontWeight: '400',
     },
 });
