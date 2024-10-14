@@ -50,10 +50,14 @@ export const CalculatorScreen = () => {
       <View
         style={{
           ...GlobalStyles.row,
-          flexWrap: 'wrap',
-          // backgroundColor: '#ff0000',
-          gap: 10,
-          justifyContent: 'space-between',
+          ...StyleSheet.create({
+            next: {
+              flexWrap: 'wrap',
+              // backgroundColor: '#ff0000',
+              gap: 10,
+              justifyContent: 'space-between',
+            },
+          }),
         }}>
         {typeButtons.map((data, index) => (
           <CalculatorButton key={index} label={data.label} color={data.color} style={data.style} />
