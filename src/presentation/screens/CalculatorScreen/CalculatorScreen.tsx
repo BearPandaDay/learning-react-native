@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextStyle, View, ViewStyle} from 'react-native';
+import { Platform, StyleSheet, Text, TextStyle, View, ViewStyle} from 'react-native';
 import {colors, GlobalStyles} from '../../../config/theme/app-theme';
 import {CalculatorButton} from '../../components';
 
@@ -35,7 +35,7 @@ export const CalculatorScreen = () => {
     {label: '3'},
     {label: '+', color: colors.orange},
 
-    {label: '0'},
+    {label: '0', style: {button:{width: (Platform.OS === 'ios' ? 180 : 200)}}},
     {label: '.'},
     {label: '=', color: colors.orange},
   ];
@@ -57,7 +57,7 @@ export const CalculatorScreen = () => {
               gap: 10,
               justifyContent: 'space-between',
             },
-          }),
+          }).next,
         }}>
         {typeButtons.map((data, index) => (
           <CalculatorButton key={index} label={data.label} color={data.color} style={data.style} />
