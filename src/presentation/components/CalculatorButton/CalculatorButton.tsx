@@ -9,15 +9,18 @@ interface props {
     button?: object;
     text?: object;
   };
+  onPress: () => void;
 }
 
 export const CalculatorButton = ({
   label,
   color = colors.darkGray,
   style,
+  onPress,
 }: props) => {
   return (
     <Pressable
+      onPress={onPress}
       style={({pressed}) => [
         GlobalStyles.button,
         style?.button,
