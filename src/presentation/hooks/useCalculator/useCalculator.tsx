@@ -45,6 +45,9 @@ export function useCalculator() {
       //   setNumber(numberString);
       // }
 
+      // Numero -0 remplazarlo por un -(numeroString)
+      if (number.startsWith('-0')) {return setNumber(`-${numberString}`);}
+
       // Bien para controlar no escribir muchos 0 antes
       if (numberString === '0') {
         return;
