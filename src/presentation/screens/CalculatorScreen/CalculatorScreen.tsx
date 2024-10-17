@@ -26,6 +26,7 @@ export const CalculatorScreen = () => {
     multiplyOperator,
     addOperator,
     substractOperator,
+    calculateOpeta,
   } = useCalculator();
 
   const typeButtons: Array<ibutton> = [
@@ -51,14 +52,14 @@ export const CalculatorScreen = () => {
 
     {onPress: () => (buildNumberString('0')), label: '0', style: {button:{width: (Platform.OS === 'ios' ? 180 : 190)}}},
     {onPress: () => (buildNumberString('.')), label: '.'},
-    {onPress: () => (console.log('=')), label: '=', color: colors.orange},
+    {onPress: calculateOpeta, label: '=', color: colors.orange},
   ];
 
   return (
     <View style={GlobalStyles.calculatorContainer}>
       <View style={StylesCalculatorScreen.contentFather}>
         <Text adjustsFontSizeToFit numberOfLines={1} style={GlobalStyles.mainResult}>{number}</Text>
-        {previewNumber.length > 1 ? <Text adjustsFontSizeToFit numberOfLines={1} style={GlobalStyles.subResult}>{ previewNumber }</Text> : <></>}
+        {previewNumber.length > 0 ? <Text adjustsFontSizeToFit numberOfLines={1} style={GlobalStyles.subResult}>{ previewNumber }</Text> : <></>}
       </View>
 
       <View

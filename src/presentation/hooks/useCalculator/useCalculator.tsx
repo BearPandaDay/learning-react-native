@@ -99,6 +99,10 @@ export function useCalculator() {
     setNumber(prev => prev.slice(0, -1));
   };
 
+  const calculateOpeta = () => {
+    console.log(parseFloat(previewNumber) + parseFloat((number)));
+  };
+
   return ({
     number,
     previewNumber,
@@ -110,5 +114,6 @@ export function useCalculator() {
     multiplyOperator,
     addOperator,
     substractOperator,
+    calculateOpeta,
   });
 }
