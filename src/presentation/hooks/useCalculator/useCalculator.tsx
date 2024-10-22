@@ -12,10 +12,11 @@ export function useCalculator() {
   const [previewNumber, setPreviewNumber] = useState('0');
 
   const lastOperator =  useRef<Operator>();
+  const lastNumber = useRef<string>('0');
 
   const clean = () => {
     setNumber('0');
-    setPreviewNumber('');
+    setPreviewNumber('0');
 
     return;
   };
@@ -26,10 +27,17 @@ export function useCalculator() {
   };
 
   const buildNumberString = (numberString: string) => {
+    lastNumber.current = numberString;
+
     // Bien para no poner varios puntos .
     if (number.includes('.') && numberString === '.') {return;}
 
     if (number.startsWith('0') || number.startsWith('-0')) {
+
+      // Bien poner -0. mas numberString que funcione bien
+      if (numberString === '.') {
+        return setNumber(number + numberString);
+      }
 
       // Bien para poner 0. solamente
       if (number === '0' && numberString === '.') { return setNumber(number + numberString); }
@@ -84,6 +92,7 @@ export function useCalculator() {
   const addOperator = () => {
     setLastNumber();
     lastOperator.current = Operator.add;
+    // calculateOperation();
   };
 
   const substractOperator = () => {
@@ -99,8 +108,25 @@ export function useCalculator() {
     setNumber(prev => prev.slice(0, -1));
   };
 
-  const calculateOpeta = () => {
-    console.log(parseFloat(previewNumber) + parseFloat((number)));
+  const calculateOperation = () => {
+    switch (lastOperator.current) {
+      case Operator.add:
+        setNumber((parseFloat(previewNumber) + parseFloat(number)).toString());
+        break;
+      case Operator.substract:
+        setNumber((parseFloat(previewNumber) - parseFloat(number)).toString());
+        break;
+      case Operator.multiply:
+        setNumber((parseFloat(previewNumber) * parseFloat(number)).toString());
+        break;
+      case Operator.divide:
+        setNumber((parseFloat(previewNumber) / parseFloat(number)).toString());
+        break;
+      default:
+        throw ('Operation no implemented');
+        // break;
+      }
+      setPreviewNumber('0');
   };
 
   return ({
@@ -114,6 +140,6 @@ export function useCalculator() {
     multiplyOperator,
     addOperator,
     substractOperator,
-    calculateOpeta,
+    calculateOperation,
   });
 }
