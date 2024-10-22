@@ -1,22 +1,42 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 enum Operator{
-  divide,
-  multiply,
-  add,
-  substract,
+  divide = '÷',
+  multiply = '×',
+  substract = '-',
+  add = '+',
 }
 
 export function useCalculator() {
+  const [formula, setFormula] = useState(''); 
+
   const [number, setNumber] = useState('0');
   const [previewNumber, setPreviewNumber] = useState('0');
 
   const lastOperator =  useRef<Operator>();
   const lastNumber = useRef<string>('0');
 
+  useEffect(() => {
+    if (lastOperator.current) {
+      const firstFormulaPart = formula.split(' ').at(0);
+      setFormula(`${firstFormulaPart} ${lastOperator.current} ${number}`);
+    } else {
+      setFormula(number);
+    }
+  }, [ number ]);
+
+  useEffect(() => {
+    const subResult = calculateSubResult();
+    setPreviewNumber(`${subResult}`);
+  }, [formula]);
+
+
   const clean = () => {
     setNumber('0');
     setPreviewNumber('0');
+
+    lastOperator.current = undefined;
+    setFormula('');
 
     return;
   };
@@ -68,6 +88,8 @@ export function useCalculator() {
   };
 
   const setLastNumber = () => {
+    calculateOperation();
+
     const num = parseFloat(number);
 
     if (number.endsWith('.')) {
@@ -109,29 +131,45 @@ export function useCalculator() {
   };
 
   const calculateOperation = () => {
-    switch (lastOperator.current) {
+    const result = calculateSubResult();
+    setFormula(`${result}`);
+
+    lastOperator.current = undefined;
+    setPreviewNumber('0');
+  };
+
+  const calculateSubResult = ():number => {
+    const [firstValue, operation, secondValue] = formula.split(' ');
+
+    const number1 = Number(`${firstValue}`);
+    const number2 = Number(`${secondValue}`);
+
+    if ( isNaN( number2 ) ) return number1;
+
+    switch (operation) {
       case Operator.add:
-        setNumber((parseFloat(previewNumber) + parseFloat(number)).toString());
-        break;
+        return(number1 + number2);
+
       case Operator.substract:
-        setNumber((parseFloat(previewNumber) - parseFloat(number)).toString());
-        break;
+        return(number1 - number2);
+
       case Operator.multiply:
-        setNumber((parseFloat(previewNumber) * parseFloat(number)).toString());
-        break;
+        return(number1 * number2);
+
       case Operator.divide:
-        setNumber((parseFloat(previewNumber) / parseFloat(number)).toString());
-        break;
+        return(number1 / number2);
+
       default:
         throw ('Operation no implemented');
         // break;
       }
-      setPreviewNumber('0');
   };
 
   return ({
     number,
     previewNumber,
+    formula,
+
     buildNumberString,
     clean,
     fundel,

@@ -18,6 +18,8 @@ export const CalculatorScreen = () => {
   const {
     number,
     previewNumber,
+    formula,
+
     buildNumberString,
     clean,
     fundel,
@@ -58,8 +60,14 @@ export const CalculatorScreen = () => {
   return (
     <View style={GlobalStyles.calculatorContainer}>
       <View style={StylesCalculatorScreen.contentFather}>
-        <Text adjustsFontSizeToFit numberOfLines={1} style={GlobalStyles.mainResult}>{number}</Text>
-        {previewNumber !== '0' ? <Text adjustsFontSizeToFit numberOfLines={1} style={GlobalStyles.subResult}>{ previewNumber }</Text> : <></>}
+        <Text adjustsFontSizeToFit numberOfLines={1} style={GlobalStyles.mainResult}>{formula}</Text>
+        {
+          (formula === previewNumber) ? (
+            <></>
+          ) : (
+          <Text adjustsFontSizeToFit numberOfLines={1} style={GlobalStyles.subResult}>{ previewNumber }</Text>
+          )
+        }
       </View>
 
       <View
