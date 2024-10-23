@@ -8,7 +8,7 @@ enum Operator{
 }
 
 export function useCalculator() {
-  const [formula, setFormula] = useState(''); 
+  const [formula, setFormula] = useState('');
 
   const [number, setNumber] = useState('0');
   const [previewNumber, setPreviewNumber] = useState('0');
@@ -23,11 +23,13 @@ export function useCalculator() {
     } else {
       setFormula(number);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ number ]);
 
   useEffect(() => {
     const subResult = calculateSubResult();
     setPreviewNumber(`${subResult}`);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formula]);
 
 
@@ -144,7 +146,7 @@ export function useCalculator() {
     const number1 = Number(`${firstValue}`);
     const number2 = Number(`${secondValue}`);
 
-    if ( isNaN( number2 ) ) return number1;
+    if ( isNaN( number2 ) ) {return (number1);}
 
     switch (operation) {
       case Operator.add:
